@@ -1,0 +1,8 @@
+select w1.id
+from weather w1 join weather w2
+on datediff(w1.recordDate, w2.recordDate) = 1
+where w1.temperature > w2.temperature
+
+/*
+join by date difference of 1. datediff gets difference of date
+*/
