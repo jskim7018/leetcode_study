@@ -1,0 +1,10 @@
+select r.contest_id, round(count(r.user_id)/(select count(*) from users)*100,2)
+as percentage
+from users u join register r 
+on u.user_id = r.user_id
+group by r.contest_id
+order by percentage desc, r.contest_id asc
+
+/*
+select를 안에서 사용하여 기존 테이블의 것을 가져온다. (inner query)
+*/
