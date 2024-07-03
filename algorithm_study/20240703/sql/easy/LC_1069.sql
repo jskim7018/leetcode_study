@@ -1,0 +1,3 @@
+select s.product_id, sum(s.quantity) as total_quantity
+from sales s
+group by s.product_id
