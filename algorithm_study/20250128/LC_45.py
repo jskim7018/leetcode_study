@@ -1,21 +1,21 @@
 from typing import List
-from functools import lru_cache
 
 class Solution:
     def jump(self, nums: List[int]) -> int:
         n = len(nums)
 
-        @lru_cache(10005)
-        def dp(i) -> int:
-            if i == n-1:
-                return 0
+        l = r = 0
 
-            ret = float('inf')
-            for jump in range(1, nums[i]+1):
-                if jump + i < n:
-                    ret = min(ret, 1 + dp(jump+i))
-                else:
-                    break
-            return ret
+        ans = 0
+        while r < n-1:
+            farthest = 0
+            for idx in range(l,r+1):
+                farthest = max(farthest, idx + nums[idx])
+            l = r+1
+            r = farthest
+            ans += 1
 
-        return dp(0)
+            if r >= n-1:
+                return ans
+
+        return ans
