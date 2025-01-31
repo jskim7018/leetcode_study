@@ -9,29 +9,18 @@ class TreeNode:
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
 
-        nodes_left = []
-        nodes_right = []
-        def traverse_left(node: Optional[TreeNode], nodes):
-            if node is None:
-                return
-            nodes.append(node.val)
-            nodes.append("1")
-            traverse_left(node.left, nodes)
-            nodes.append("2")
-            traverse_left(node.right, nodes)
+        def check_valid(node1, node2) -> bool:
+            if node1 is None and node2 is None:
+                return True
+            if node1 is None or node2 is None:
+                return False
 
-        def traverse_right(node: Optional[TreeNode], nodes):
-            if node is None:
-                return
-            nodes.append(node.val)
-            nodes.append("1")
-            traverse_right(node.right, nodes)
-            nodes.append("2")
-            traverse_right(node.left, nodes)
+            if node1.val != node2.val:
+                return False
 
-        traverse_left(root.left, nodes_left)
-        traverse_right(root.right, nodes_right)
+            ret = (check_valid(node1.left, node2.right)
+                   and check_valid(node1.right, node2.left))
 
-        print(nodes_left)
-        print(nodes_right)
-        return nodes_left == nodes_right
+            return ret
+
+        return check_valid(root.left, root.right)
