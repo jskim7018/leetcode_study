@@ -1,27 +1,23 @@
 from typing import List
 from collections import deque
 
+
 class Solution:
     def minimumOperations(self, nums: List[int]) -> int:
-        dq = deque(nums)
-
         l = 0
-        r = len(dq)-1
+        r = len(nums)-1
 
         ans = 0
         while l<r:
-            if dq[l] == dq[r]:
-                dq.popleft()
-                dq.pop()
-                r-=2
-            elif dq[l] > dq[r]:
-                popped = dq.pop()
+            if nums[l] > nums[r]:
+                nums[r-1] += nums[r]
                 r-=1
-                dq[r] += popped
+                ans += 1
+            elif nums[l] < nums[r]:
+                nums[l+1] += nums[l]
+                l+=1
                 ans += 1
             else:
-                popped = dq.popleft()
-                dq[l] += popped
+                l+=1
                 r-=1
-                ans += 1
         return ans
