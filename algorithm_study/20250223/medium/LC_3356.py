@@ -25,16 +25,13 @@ class Solution:
         l = 0
         r = len(queries)-1
         while l <= r:
-            print(f'{l}    {r}')
             mid = (l+r)//2
             sweep_result = sweep(mid)
-            print(sweep_result)
             if sweep_result:
                 r = mid - 1
             else:
                 l = mid + 1
 
-        print(l)
         if r + 1 >= len(queries):
             return -1
         else:
