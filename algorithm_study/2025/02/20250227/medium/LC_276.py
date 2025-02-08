@@ -11,8 +11,12 @@ class Solution:
 
             ret = 0
 
-            ret += dp(idx+1, 2) * (k-1)
-            ret += dp(idx+1, 1) * k
+            if cnt == 2:
+                ret += dp(idx+1, 1) * (k-1)
+            elif cnt == 1:
+                ret += dp(idx+1, 2) + dp(idx+1, 1) * (k-1)
+            else:
+                ret += dp(idx+1, 1) * k
 
             return ret
 
