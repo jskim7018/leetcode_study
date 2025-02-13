@@ -3,6 +3,8 @@ import math
 
 class Solution:
     def countPrimes(self, n: int) -> int:
+
+        # Sieve of Era.
         prime_candidates = [False, False] + [True]*(n-2)
 
         for i in range(2, int(math.sqrt(n)) + 1):
