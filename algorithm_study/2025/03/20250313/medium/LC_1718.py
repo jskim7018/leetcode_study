@@ -16,9 +16,7 @@ class Solution:
                 else:
                     return False
             if seq[idx] != -1:
-                isFound = construct(idx+1, seq)
-                if isFound:
-                    return isFound
+                return construct(idx+1, seq)
             else:
                 for i in range(n, 0, -1):
                     if i not in used:
