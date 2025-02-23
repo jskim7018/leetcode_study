@@ -18,14 +18,9 @@ class Solution:
             child_preorder = preorder[1:]
             child_postorder = postorder[:-1]
 
-            st_pre = set()
-            st_post = set()
-
             i = 0
-            while i < len(child_preorder):
-                st_pre.add(child_preorder[i])
-                st_post.add(child_postorder[i])
-                if st_pre == st_post:
+            while i < len(child_postorder):
+                if child_preorder[0] == child_postorder[i]:
                     break
                 i += 1
 
