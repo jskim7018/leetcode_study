@@ -2,7 +2,7 @@ from typing import List
 from sortedcontainers import SortedSet
 import heapq
 
-
+# TODO check editorial
 class Solution:
     def numSubarrayBoundedMax(self, nums: List[int], left: int, right: int) -> int:
         n = len(nums)
