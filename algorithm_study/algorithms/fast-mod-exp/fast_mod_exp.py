@@ -10,6 +10,7 @@ def fast_mod_exp(base: int, exponent: int, mod: int) -> int:
 
     return result
 
+
 def fast_pow(base: float, exponent: int) -> float:
     result = 1.0
     is_negative = exponent < 0
