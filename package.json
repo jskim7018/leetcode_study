@@ -1,0 +1,24 @@
+{
+  "name": "leetcode_study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jskim7018/leetcode_study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jskim7018/leetcode_study/issues"
+  },
+  "homepage": "https://github.com/jskim7018/leetcode_study#readme",
+  "dependencies": {
+    "@datastructures-js/queue": "^4.2.3",
+    "datastructures-js": "^13.0.0"
+  }
+}
