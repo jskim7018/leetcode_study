@@ -1,32 +1,31 @@
 function validPalindrome(s: string): boolean {
-    const dp: number[][][] = Array.from({length: s.length}, ()=>
-        Array.from({length: s.length}, ()=>
-            Array(2).fill(-1)
-        )
+    const dp: number[][] = Array.from({length: s.length}, ()=>
+        Array(3).fill(-1)
     )
 
 
-    function solve(i: number, j: number, chance:number,
-        s:string
+    function solve(i: number, chance:number,
+        s:string 
     ): boolean {
-        if (i >= j) {
+        if (i+chance >= Math.ceil(s.length/2)) {
             return true
         }
-
-        if (dp[i][j][chance] != -1) return dp[i][j][chance]==1?true:false
+        if (dp[i][chance==-1?2:chance] != -1) return dp[i][chance==-1?2:chance]==1 ? true:false
 
         let ret = false
-        if (s[i] == s[j]) {
-            ret ||= solve(i+1, j-1, chance, s);
+
+        if (s[i+chance] == s[s.length-i-1]) {
+            ret ||= solve(i+1, chance, s);
         } else {
-            if (chance > 0) {
-                ret ||= solve(i+1, j, chance-1, s) 
-                || solve(i,j-1, chance-1,s)
+            if (chance != 0) {
+                return false
+            } else {
+                ret ||= solve(i+1, -1, s) || solve(i,1,s)
             }
         }
-        dp[i][j][chance] = ret ? 1:0
+        dp[i][chance==-1?2:chance] = ret ? 1:0
         return ret
     }
-
-    return solve(0, s.length-1, 1, s)
+    let ans = solve(0,0,s)
+    return ans
 };
