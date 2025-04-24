@@ -1,24 +1,24 @@
 function validWordAbbreviation(word: string, abbr: string): boolean {
-    
-    let curr_idx = 0
-    for (let i=0;i<abbr.length;i++) {
-        if (abbr[i] == word[curr_idx]) {
-            curr_idx += 1
-        } else if (abbr[i] >= '0' && abbr[i] <= '9') {
-            let j = 1
-            let number = 0
-            while (abbr[i] >= '0' && abbr[i] <= '9') {
-                number += Number(abbr[i]) * j
-                j *= 10
-            }
-            curr_idx += number
-        } else {
-            return false
+    let i = 0; 
+    let j = 0; 
+  
+    while (i < abbr.length && j <= word.length) {
+      if (abbr[i] >= '0' && abbr[i] <= '9') {
+        if (abbr[i] === '0') return false;
+  
+        let num = 0;
+        while (i < abbr.length && abbr[i] >= '0' && abbr[i] <= '9') {
+          num = num * 10 + Number(abbr[i]);
+          i++;
         }
+        j += num;
+      } else {
+        if (word[j] !== abbr[i]) return false;
+        i++;
+        j++;
+      }
     }
-    if (curr_idx >= word.length) {
-        return true
-    } else {
-        return false
-    }
-};
+  
+    return i === abbr.length && j === word.length;
+  }
+  
