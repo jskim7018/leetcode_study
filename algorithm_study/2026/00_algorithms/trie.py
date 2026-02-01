@@ -2,10 +2,10 @@ class TrieNode:
     __slots__ = ("children", "is_end")
 
     def __init__(self):
-        self.children = {}
+        self.children = {} # next가 아니라 children으로 이름 지으면 좋을듯.
         self.is_end = False
 
-
+# TrieNode를 기반으로 Trie 자료구조를 만들면 됨.
 class Trie:
     def __init__(self):
         self.root = TrieNode()
