@@ -17,7 +17,6 @@ def compute_lps(pattern: str):
             if length != 0:
                 length = lps[length - 1]  # fallback
             else:
-
                 lps[i] = 0
                 i += 1
 
